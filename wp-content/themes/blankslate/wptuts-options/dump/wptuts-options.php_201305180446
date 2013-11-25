@@ -1,0 +1,385 @@
+<?php
+function wptuts_get_default_options() {
+	$options = array(
+		'logo' => '',
+		'logo_ids'=>''		
+	);
+	return $options;
+}
+
+
+function wptuts_options_init() {
+     $wptuts_options = get_option( 'theme_wptuts_options' );
+	 
+	 // Are our options saved in the DB?
+     if ( false === $wptuts_options ) {
+		  // If not, we'll save our default options
+          $wptuts_options = wptuts_get_default_options();
+		  add_option( 'theme_wptuts_options', $wptuts_options );
+     }
+	 
+     // In other case we don't need to update the DB
+}
+// Initialize Theme options
+add_action( 'after_setup_theme', 'wptuts_options_init' );
+
+function wptuts_options_setup() {
+	global $pagenow;
+	if ('media-upload.php' == $pagenow || 'async-upload.php' == $pagenow) {
+		// Now we'll replace the 'Insert into Post Button inside Thickbox' 
+		add_filter( 'gettext', 'replace_thickbox_text' , 1, 2 );
+	}
+}
+add_action( 'admin_init', 'wptuts_options_setup' );
+
+function replace_thickbox_text($translated_text, $text ) {	
+	if ( 'Insert into Post' == $text ) {
+		$referer = strpos( wp_get_referer(), 'wptuts-settings' );
+		if ( $referer != '' ) {
+			return __('I want this to be my logo!', 'wptuts' );
+		}
+	}
+
+	return $translated_text;
+}
+
+// Add "WPTuts Options" link to the "Appearance" menu
+function wptuts_menu_options() {
+	//add_theme_page( $page_title, $menu_title, $capability, $menu_slug, $function);
+     add_theme_page('WPTuts Options', 'WPTuts Options', 'edit_theme_options', 'wptuts-settings', 'wptuts_admin_options_page');
+}
+// Load the Admin Options page
+add_action('admin_menu', 'wptuts_menu_options');
+
+function wptuts_admin_options_page() {
+	?>
+		<!-- 'wrap','submit','icon32','button-primary' and 'button-secondary' are classes 
+		for a good WP Admin Panel viewing and are predefined by WP CSS -->
+		
+		
+		
+		<div class="wrap">
+			
+			<div id="icon-themes" class="icon32"><br /></div>
+		
+			<h2><?php _e( 'WPTuts Options', 'wptuts' ); ?></h2>
+			
+			<!-- If we have any error by submiting the form, they will appear here -->
+			<?php settings_errors( 'wptuts-settings-errors' ); ?>
+			
+			<form id="form-wptuts-options" action="options.php" method="post" enctype="multipart/form-data">
+			
+				<?php
+					settings_fields('theme_wptuts_options');
+					do_settings_sections('wptuts');
+				?>
+			
+				<p class="submit">
+					<input name="theme_wptuts_options[submit]" id="submit_options_form" type="submit" class="button-primary" value="<?php esc_attr_e('Save Settings', 'wptuts'); ?>" />
+					<input name="theme_wptuts_options[reset]" type="submit" class="button-secondary" value="<?php esc_attr_e('Reset Defaults', 'wptuts'); ?>" />		
+				</p>
+			
+			</form>
+			
+		</div>
+	<?php
+}
+
+function wptuts_options_validate( $input ) {
+	$default_options = wptuts_get_default_options();
+	$valid_input = $default_options;
+	
+	$wptuts_options = get_option('theme_wptuts_options');
+	
+	$submit = ! empty($input['submit']) ? true : false;
+	$reset = ! empty($input['reset']) ? true : false;
+	$delete_logo = ! empty($input['delete_logo']) ? true : false;
+	
+	if ( $submit ) {
+		if ( $wptuts_options['logo'] != $input['logo']  && $wptuts_options['logo'] != '' )
+			delete_image( $wptuts_options['logo'] );
+
+	
+			$valid_input['logo'] = $input['logo'];
+	 		$valid_input['logo_ids'] = $input['logo_ids'];
+			
+			$valid_input['logo2'] = $input['logo2'];
+	 		$valid_input['logo_ids2'] = $input['logo_ids2'];
+	 		$valid_input['headerimg_title'] = $input['headerimg_title'];			
+			
+			
+	 		$valid_input['localservices_title'] = $input['localservices_title'];
+			
+	 		$valid_input['search_title'] = $input['search_title'];
+			
+
+			$valid_input['logo3'] = $input['logo3'];
+	 		$valid_input['logo_ids3'] = $input['logo_ids3'];
+			
+		
+	}
+	elseif ( $reset ) {
+		delete_image( $wptuts_options['logo'] );
+		$valid_input['logo'] = $default_options['logo'];
+		$valid_input['logo_ids'] = $default_options['logo_ids'];			
+	}
+	elseif ( $delete_logo ) {
+		delete_image( $wptuts_options['logo'] );
+		$valid_input['logo'] = '';
+		$valid_input['logo_ids'] = '';			
+	}
+	
+	return $valid_input;
+}
+
+function delete_image( $image_url ) {
+	global $wpdb;
+	
+	// We need to get the image's meta ID..
+	$query = "SELECT ID FROM wp_posts where guid = '" . esc_url($image_url) . "' AND post_type = 'attachment'";  
+	$results = $wpdb -> get_results($query);
+
+	// And delete them (if more than one attachment is in the Library
+	foreach ( $results as $row ) {
+		wp_delete_attachment( $row -> ID );
+	}	
+}
+
+/********************* JAVASCRIPT ******************************/
+function wptuts_options_enqueue_scripts() {
+	wp_register_script( 'wptuts-upload', get_template_directory_uri() .'/wptuts-options/js/wptuts-upload.js', array('jquery','media-upload','thickbox') );	
+
+	if ( 'appearance_page_wptuts-settings' == get_current_screen() -> id ) {
+		wp_enqueue_script('jquery');
+		
+		wp_enqueue_script('thickbox');
+		wp_enqueue_style('thickbox');
+		
+		wp_enqueue_script('media-upload');
+		wp_enqueue_script('wptuts-upload');
+		
+	}
+	
+}
+add_action('admin_enqueue_scripts', 'wptuts_options_enqueue_scripts');
+
+
+function wptuts_options_settings_init() {
+	register_setting( 'theme_wptuts_options', 'theme_wptuts_options', 'wptuts_options_validate' );
+	
+
+// Image upload 1 
+	
+	add_settings_section('wptuts_settings_header', __( 'Logo Options', 'wptuts' ), 'wptuts_settings_header_text', 'wptuts'); // Add a form section for the Logo
+	add_settings_field('wptuts_setting_logo',  __( 'Logo', 'wptuts' ), 'wptuts_setting_logo', 'wptuts', 'wptuts_settings_header');// Add Logo uploader
+	add_settings_field('wptuts_setting_logo_preview',  __( 'Logo Preview', 'wptuts' ), 'wptuts_setting_logo_preview', 'wptuts', 'wptuts_settings_header'); // Add Current Image Preview 
+
+
+
+// Image upload 2
+
+	add_settings_section('wptuts_settings_header2', __( 'Home Page Banner', 'wptuts' ), 'wptuts_settings_header_text2', 'wptuts'); // Add a form section for the Logo
+	add_settings_field('wptuts_setting_logo2',  __( 'Banner Image', 'wptuts' ), 'wptuts_setting_logo2', 'wptuts', 'wptuts_settings_header2');// Add Logo uploader
+	add_settings_field('wptuts_setting_logo_preview2',  __( 'Banner Preview', 'wptuts' ), 'wptuts_setting_logo_preview2', 'wptuts', 'wptuts_settings_header2'); // Add Current Image Preview 
+
+	add_settings_field('wptuts_setting_mainImage_Field_title',  __( 'Image body text ', 'wptuts' ), 'wptuts_setting_logo_Field_title', 'wptuts', 'wptuts_settings_header2');
+
+
+
+
+
+// Local Services
+	add_settings_section('wptuts_settings_header4', __( 'Local Services', 'wptuts' ), 'wptuts_settings_header_text4', 'wptuts'); // Add a form
+	add_settings_field('wptuts_setting_localservice_Field_title',  __( 'Local Services ', 'wptuts' ), 'wptuts_setting_localservice_Field_title', 'wptuts', 'wptuts_settings_header4');
+
+
+
+
+// Search Options
+	add_settings_section('wptuts_settings_header5', __( 'Search Area', 'wptuts' ), 'wptuts_settings_header_text5', 'wptuts'); // Add a form
+	add_settings_field('wptuts_setting_search_Field_title',  __( 'Local Services ', 'wptuts' ), 'wptuts_setting_search_Field_title', 'wptuts', 'wptuts_settings_header5');
+
+
+
+
+
+
+
+// Image upload 3
+
+	add_settings_section('wptuts_settings_header3', __( 'Home Page Banner', 'wptuts' ), 'wptuts_settings_header_text3', 'wptuts'); // Add a form section for the Logo
+	add_settings_field('wptuts_setting_logo3',  __( 'Banner Image', 'wptuts' ), 'wptuts_setting_logo3', 'wptuts', 'wptuts_settings_header3');// Add Logo uploader
+	add_settings_field('wptuts_setting_logo_preview3',  __( 'Banner Preview', 'wptuts' ), 'wptuts_setting_logo_preview3', 'wptuts', 'wptuts_settings_header3'); // Add Current Image Preview 
+	
+	
+	
+	
+}
+add_action( 'admin_init', 'wptuts_options_settings_init' );
+
+function wptuts_setting_logo_preview() {
+	$wptuts_options = get_option( 'theme_wptuts_options' );  ?>
+	<div id="upload_logo_preview" style="min-height: 100px;">
+		<img style="max-width:100%;" src="<?php echo esc_url( $wptuts_options['logo'] ); ?>" />
+	</div>
+	<?php
+}
+
+function wptuts_settings_header_text() {
+	?>
+		<p><?php _e( 'Manage Logo Options for WpTuts Theme.', 'wptuts' ); ?></p>
+	<?php
+}
+
+function wptuts_setting_logo() {
+	$wptuts_options = get_option( 'theme_wptuts_options' );
+	?>
+		<input type="text" id="logo_url1" name="theme_wptuts_options[logo]" value="<?php echo esc_url( $wptuts_options['logo'] ); ?>" />
+	<input type="text" id="img_ids1" name="theme_wptuts_options[logo_ids]" value="<?php echo  $wptuts_options['logo_ids'] ; ?>" />        
+		<input id="upload_logo_button1" type="button" class="button" value="<?php _e( 'Upload Logo', 'wptuts' ); ?>" />
+		<?php if ( '' != $wptuts_options['logo'] ): ?>
+			<input id="delete_logo_button1" name="theme_wptuts_options[delete_logo]" type="submit" class="button" value="<?php _e( 'Delete Logo', 'wptuts' ); ?>" />
+		<?php endif; ?>
+		<span class="description"><?php _e('Upload an image for the banner.', 'wptuts' ); ?></span>
+	<?php
+}
+
+
+
+
+
+function wptuts_setting_logo_preview2() {
+	$wptuts_options = get_option( 'theme_wptuts_options' );  ?>
+	<div id="upload_logo_preview" style="min-height: 100px;">
+		<img style="max-width:100%;" src="<?php echo esc_url( $wptuts_options['logo2'] ); ?>" />
+	</div>
+	<?php
+}
+
+function wptuts_settings_header_text2() {
+	?>
+		<p><?php _e( 'Manage Logo Options for WpTuts Theme.', 'wptuts' ); ?></p>
+	<?php
+}
+
+function wptuts_setting_logo2() {
+	$wptuts_options = get_option( 'theme_wptuts_options' );
+	?>
+		<input type="text" id="logo_url2" name="theme_wptuts_options[logo2]" value="<?php echo esc_url( $wptuts_options['logo2'] ); ?>" />
+	<input type="text" id="img_ids2" name="theme_wptuts_options[logo_ids2]" value="<?php echo  $wptuts_options['logo_ids2'] ; ?>" />        
+		<input id="upload_logo_button2" type="button" class="button" value="<?php _e( 'Upload Logo', 'wptuts' ); ?>" />
+		<?php if ( '' != $wptuts_options['logo2'] ): ?>
+			<input id="delete_logo_button2" name="theme_wptuts_options[delete_logo2]" type="submit" class="button" value="<?php _e( 'Delete Logo', 'wptuts' ); ?>" />
+		<?php endif; ?>
+		<span class="description"><?php _e('Upload an image for the banner.', 'wptuts' ); ?></span>
+	<?php
+}
+
+
+
+
+
+
+function wptuts_setting_logo_preview3() {
+	$wptuts_options = get_option( 'theme_wptuts_options' );  ?>
+	<div id="upload_logo_preview" style="min-height: 100px;">
+		<img style="max-width:100%;" src="<?php echo esc_url( $wptuts_options['logo3'] ); ?>" />
+	</div>
+	<?php
+}
+
+function wptuts_settings_header_text3() {
+	?>
+		<p><?php _e( 'Manage Logo Options for WpTuts Theme.', 'wptuts' ); ?></p>
+	<?php
+}
+
+function wptuts_setting_logo3() {
+	$wptuts_options = get_option( 'theme_wptuts_options' );
+	?>
+		<input type="text" id="logo_url3" name="theme_wptuts_options[logo3]" value="<?php echo esc_url( $wptuts_options['logo3'] ); ?>" />
+	<input type="text" id="img_ids3" name="theme_wptuts_options[logo_ids3]" value="<?php echo  $wptuts_options['logo_ids3'] ; ?>" />        
+		<input id="upload_logo_button3" type="button" class="button" value="<?php _e( 'Upload Logo', 'wptuts' ); ?>" />
+		<?php if ( '' != $wptuts_options['logo3'] ): ?>
+			<input id="delete_logo_button3" name="theme_wptuts_options[delete_logo3]" type="submit" class="button" value="<?php _e( 'Delete Logo', 'wptuts' ); ?>" />
+		<?php endif; ?>
+		<span class="description"><?php _e('Upload an image for the banner.', 'wptuts' ); ?></span>
+	<?php
+}
+
+
+
+function wptuts_setting_logo_Field_title() {
+	$wptuts_options1 = get_option( 'theme_wptuts_options' );
+
+	$args = array(
+		'textarea_rows' => 1,
+		'teeny' => true,
+		'quicktags' => false,
+		'textarea_name' => 'theme_wptuts_options[headerimg_title]'
+	);
+	wp_editor( $wptuts_options1['headerimg_title'] , 'headerimg_title', $args );
+
+	?>
+		<span class="description"><?php _e('Title for Header Image.', 'wptuts' ); ?></span>
+	<?php
+}
+
+
+
+
+function wptuts_settings_header_text4() {
+	?>
+		<p><?php _e( 'Local Services Options for WpTuts Theme.', 'wptuts' ); ?></p>
+	<?php
+}
+
+
+
+function wptuts_setting_localservice_Field_title() {
+	$wptuts_options1 = get_option( 'theme_wptuts_options' );
+
+	$args = array(
+		'textarea_rows' => 1,
+		'teeny' => true,
+		'quicktags' => false,
+		'textarea_name' => 'theme_wptuts_options[localservices_title]'
+	);
+	wp_editor( $wptuts_options1['localservices_title'] , 'localservices_title', $args );
+
+	?>
+		<span class="description"><?php _e('Title for Local Services.', 'wptuts' ); ?></span>
+	<?php
+}
+
+
+
+
+
+
+function wptuts_settings_header_text5() {
+	?>
+		<p><?php _e( 'Search Options for WpTuts Theme.', 'wptuts' ); ?></p>
+	<?php
+}
+
+
+
+function wptuts_setting_search_Field_title() {
+	$wptuts_options1 = get_option( 'theme_wptuts_options' );
+
+	$args = array(
+		'textarea_rows' => 1,
+		'teeny' => true,
+		'quicktags' => false,
+		'textarea_name' => 'theme_wptuts_options[search_title]'
+	);
+	wp_editor( $wptuts_options1['search_title'] , 'search_title', $args );
+
+	?>
+		<span class="description"><?php _e('Title for Search Area.', 'wptuts' ); ?></span>
+	<?php
+}
+
+
+?>

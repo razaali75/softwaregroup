@@ -1,0 +1,118 @@
+
+#post-body-content .vr_venue_photos input,
+#post-body-content .vr_venue_photos select,
+#post-body-content .vr_venue_photos textarea {
+	padding: 3px 4px;
+	border-color: #DFDFDF;
+	border-width: 1px;
+	border-style: solid;
+	-moz-border-radius: 6px;
+	-khtml-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	font-size: 1.7em;
+	line-height: 100%;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-mox-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#post-body-content textarea {
+	font-size: 1.2em;
+	line-height: 1.5em;
+}
+#post-body-content select {
+	font-size: 1.4em;
+}
+
+.vr_venue_required_settings {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #999;
+	margin-bottom: 20px;
+}
+.vr_venue_instructions {
+	font-style: italic;
+	padding-bottom: 1em;
+}
+#vr_venue_photos_container {
+	overflow: auto;
+}
+#vr_venue_photos_container li {
+	float: left;
+	background-color: #ccc;
+	width: 85px;
+	height: 85px;
+	border-radius: 4px;
+	margin: 0 20px 20px 0;
+	position: relative
+}
+#vr_venue_photos_container .vr_venue_photo {
+	cursor: move;
+	margin: 5px 0 0 5px;
+	width: 75px;
+	height: 75px;
+}
+#vr_venue_photos_container .vr_venue_delete_photo {
+	cursor: pointer;
+	position: absolute;
+	bottom: -8px;
+	right: -8px;
+}
+#vr_venue_uploader_container {
+	overflow: auto;
+}
+#vr_venue_uploader_container .swfupload,
+#vr_venue_uploader_queue_progress,
+#vr_venue_uploader_file_status {
+	float: right;
+	clear: both;
+}
+
+.vr_venue_details {
+	position: relative;
+}
+.vr_venue_details.loading {
+	opacity: .5;
+}
+#vr_venue_details_loading {
+	background-color: white;
+	display: none;
+	font-size: 500%;
+	left: 50%;
+	margin-left: -137px;
+	position: absolute;
+	top: 10px;
+}
+.vr_venue_details.loading #vr_venue_details_loading {
+	display: inline-block;
+}
+#vr_venue_details_load_error {
+	text-align: center;
+	padding: 7px;
+	margin: 10px 0;
+	background-color: #FF4B32;
+	color: white;
+	font-weight: bold;
+}
+.vr_venue_details .vr_venue_2_columns {
+	box-sizing: border-box;
+	float: left;
+	width: 48%;
+}
+.vr_venue_details .vr_venue_2_columns:first-child {
+	padding-right: 1%;
+}
+.vr_venue_details .vr_venue_2_columns:last-child {
+	padding-left: 1%;
+}
+.vr_venue_details .vr_venue_3_columns {
+	box-sizing: border-box;
+	float: left;
+	padding-right: 15px;
+	width: 31.3%;
+}
+.vr_venue_add_term {
+	display: inline-block;
+	padding-left: 5px;
+	vertical-align: bottom;
+}

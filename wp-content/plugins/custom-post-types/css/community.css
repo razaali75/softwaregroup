@@ -1,0 +1,204 @@
+/* CSS Document */
+.vr-thumbnails {
+	margin: 0;
+	padding: 0;
+	overflow: auto;
+}
+.vr-thumbnail-item {
+	float: left;
+	list-style: none;
+	margin: 3px;
+}
+.vr-thumbnail {
+	border: 1px solid #ccc;
+	height: 85px;
+	padding: 3px;
+	width: 85px;
+}
+
+.vr-main-photo
+{
+	width:630px;
+	background:#EBECEE !important;
+	border:0 solid #CCC !important;
+	height:400px;
+	text-align:center;
+	margin:10px 0;
+	padding:5px !important;
+}
+
+.vr-thumbnail-item
+{
+	float:left !important;
+	list-style:none !important;
+	margin:3px !important;
+}
+
+.vr-sidescroller img.vr-thumbnail
+{
+	background:#EBECEE;
+	border:medium none;
+	height:100px;
+	width:100px;
+	margin:10px 7px 0 0;
+	padding:5px;
+}
+
+.vr_listing-slideshow
+{
+	margin-top:10px;
+}
+
+.vr-slideshow-img
+{
+	height:349px;
+	width:620px;
+	border:none !important;
+}
+
+
+.vr-sidescroller .vr-sidescroller-element {
+	width: 110px;
+	margin-bottom: 1em;
+	position: relative;
+	background-color: #fff;
+	height: 110px;
+}
+
+.vr-sidescroller .vr-sidescroller-thumb-container {
+	padding: .25em;
+	border-bottom: 1px solid #ccc;
+}
+
+.vr-sidescroller {
+	height: 150px;
+	width: 580px;
+}
+
+.vr-sidescroller .scrollable {
+	width: 580px;
+	margin-left: 25px;
+}
+
+.vr-sidescroller .vr-sidescroller-thumb-container img {
+	width: 100%;
+}
+
+.vr-sidescroller .vr-sidescroller-controls {
+	width: 650px;
+	margin-top: 1em;
+}
+.vr-sidescroller .vr-sidescroller-controls a {
+	display: block;
+	float: left;
+	height: 22px;
+	width: 25px;
+	padding: 5px;
+	cursor: pointer;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #fff;
+	margin-top:-100px;
+}
+
+.vr-sidescroller .vr-sidescroller-controls a.disabled {
+	cursor: default;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+
+.vr-sidescroller .vr-sidescroller-controls a.next {
+	background-image: url('../images/scroller-right-arrow.png');
+	float: right;
+}
+
+.vr-sidescroller .vr-sidescroller-controls a.prev {
+	background-image: url('../images/scroller-left-arrow.png');
+	float:left;
+}
+
+.vr-sidescroller .vr-sidescroller-no-results {
+	text-align: center;
+}
+
+.ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+/* end clearfix */
+
+
+/*----- COMMUNITY PAGES -----*/
+
+#commnav {
+    margin: 0px 0 30px 0 !important;
+    padding: 0px 0 8px 80px;
+    background: transparent url(../images/commnav_bg.png) no-repeat left center;
+    /*background-image: url(images/site_sprite.png);
+    background-position: -10px -2495px;*/
+    width: 600px;
+    height: auto;
+    float: left;
+    line-height:15px;
+    border-bottom: 0px solid #E4E4E4;
+    border-top: 0px solid #E4E4E4;
+}
+#commnav ul {
+    float: left;
+    list-style: none !important;
+    margin: 0px;
+    padding: 0px;
+    width: 670px;
+}
+#commnav li {
+    float: left;
+    list-style: none !important;
+    margin: 0px 0px 0 0px !important;
+    padding: 0px !important;
+    background: none !important;/*background-image: url(images/site_sprite.png);
+    background-position: -10px -2495px;*/
+}
+#commnav li.last {
+    float: left;
+    list-style: none;
+    margin: 0px 0px 0 0px;
+    padding: 0px;
+    background: none;/*background-image: url(images/site_sprite.png);
+    background-position: -10px -2495px;*/
+}
+#commnav li a, #commnav li a:link, #commnav li a:visited {
+    color: #7FA74C /*#3399CC*/ !important;
+    display: block;
+    font-size: 16px;
+    /*font-family: Tahoma, Verdana;*/
+    font-weight: 600 !important;
+    text-transform: lowercase;
+    text-decoration: none;
+    margin: 0px 10px 0 0;
+    padding: 5px 5px 5px 0px;
+    letter-spacing: 0px;
+    border-right: 1px dotted #E4E4E4;
+}
+#commnav li a:hover, #commnav li a:active {
+    background: transparent;
+    color: #AADF65 !important;
+    text-decoration: underline;/*filter:alpha(opacity=98);
+    -moz-opacity:0.98;
+    -khtml-opacity: 0.98;
+    opacity: 0.98;*/
+}
+.dropform {
+    border: 0px solid #111 !important;
+    float: right !important;
+    width: 250px !important;
+    background: none;
+    margin: -13px 0 0 0 !important;
+}
+.dropform select {
+    background: #FFF;
+    color: #444;
+    float: right;
+    padding: 6px 5px 6px 5px;
+    border: 1px solid #E4E4E4;
+}

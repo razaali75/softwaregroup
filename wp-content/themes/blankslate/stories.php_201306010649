@@ -1,0 +1,43 @@
+<div id="stories" class="full-width">
+
+	<div class="container">
+		<h2>Success Stories</h2>
+	</div>
+		<div class="stories_box one">
+		
+			<img src="wp-content/themes/blankslate/images/testimonial3.jpg" />
+			<p>
+			”Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue, nisi a ullamcorper luctus, velit nisl tincidunt est, nec convallis nibh odio sed massa. Donec et tellus diam. Phasellus hendrerit vestibulum neque sit amet feugiat. Fusce magna mauris, aliquam eget.”
+			</p>
+			<span class="test_name">
+			-Mike Johnson	
+			</span>
+		
+		</div>
+	
+		<div class="stories_box two">
+		
+			<img src="wp-content/themes/blankslate/images/testimonial2.jpg" />
+			<p>
+			”Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue, nisi a ullamcorper luctus, velit nisl tincidunt est, nec convallis nibh odio sed massa. Donec et tellus diam. Phasellus hendrerit vestibulum neque sit amet feugiat. Fusce magna mauris, aliquam eget.”
+			</p>
+			<span class="test_name">
+			-Mike Johnson	
+			</span>
+		
+		</div>
+	
+		<div class="stories_box three">
+		
+			<img src="wp-content/themes/blankslate/images/testimonial3.jpg" />
+			<p>
+			”Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue, nisi a ullamcorper luctus, velit nisl tincidunt est, nec convallis nibh odio sed massa. Donec et tellus diam. Phasellus hendrerit vestibulum neque sit amet feugiat. Fusce magna mauris, aliquam eget.”
+			</p>
+			<span class="test_name">
+			-Mike Johnson	
+			</span>
+		
+		</div>
+	
+
+</div>

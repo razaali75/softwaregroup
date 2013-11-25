@@ -1,0 +1,25 @@
+
+<div id="clients" class="full-width">
+
+	<div class="container">
+	
+		<div class="clients">
+		
+		<h2>Our Clients</h2>
+		
+			<div class="client_images">
+				<img src="wp-content/themes/blankslate/images/verizon.png" />
+				<img src="wp-content/themes/blankslate/images/sungaurd.jpg" />
+				<img src="wp-content/themes/blankslate/images/ge.jpg" />
+			</div>
+			<div class="client_case">
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet libero faucibus lacus mollis tempus laoreet interdum risus. Etiam aliquam, risus sed ultrices imperdiet, nulla sem bibendum ipsum, ac porttitor odio eros non lorem. In mi mauris, facilisis eu luctus id, ultrices in sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet libero faucibus lacus mollis tempus laoreet interdum risus. Etiam aliquam, risus sed ultrices imperdiet, nulla sem bibendum ipsum, ac porttitor odio eros non lorem. In mi mauris, facilisis eu luctus id, ultrices in sem.
+			</p>
+			</div>
+			
+		</div>
+	
+	</div>
+
+</div>

@@ -1,0 +1,29 @@
+<?php
+/**
+ * Template Name: Homepage
+ *
+ */
+?>
+<?php get_header(); ?>
+
+
+<?php include(TEMPLATEPATH."/slider.php");?>
+
+
+
+<?php include(TEMPLATEPATH."/cta.php");?>
+
+
+<?php include(TEMPLATEPATH."/clients.php");?>
+
+
+
+<?php include(TEMPLATEPATH."/choose.php");?>
+
+
+
+<?php include(TEMPLATEPATH."/stories.php");?>
+
+
+
+<?php get_footer(); ?>

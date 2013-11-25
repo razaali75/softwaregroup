@@ -1,0 +1,125 @@
+#popup_events{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    height: 900px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+    display:none;
+}
+
+#popup_events_list{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 3px 3px 3px #888888;
+    margin: 100px auto;
+    opacity: 1;
+    position: relative;
+    width: 600px;
+    z-index: 1000;
+}
+
+.event_row{
+    background-image: url("images/event.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    margin: 10px 5px;
+    padding: 3px 50px;
+    border-bottom:1px solid #eee;
+}
+
+.event_title a{
+    display: block;
+    font-family: helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 2px;
+    text-decoration: none;
+}
+
+.event_dates{
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.event_dates span{
+    color:#B70000;
+}
+
+.post_row{
+    background-image: url("images/post.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    margin: 10px 5px;
+    padding: 3px 50px;
+    border-bottom:1px solid #eee;
+}
+
+.post_title a{
+    display: block;
+    font-family: helvetica;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 2px;
+    text-decoration: none;
+}
+
+.post_dates{
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.event_dates span{
+    color:#B70000;
+}
+
+
+.pop_cls{
+    width: 70px; 
+    height: 70px; 
+    color: rgb(255, 255, 255); 
+    right: 0pt; 
+    position: absolute; 
+    border: 1px solid rgb(255, 255, 255);
+    background-image: url("images/close.png");
+}
+
+.event_highlight{
+    background: none repeat scroll 0 0 #487EB0;
+    color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+}
+
+#popup_events_head{
+    padding: 10px; 
+    text-align: center; 
+    font-weight: bold; 
+    color: rgb(84, 84, 84); 
+    border-bottom: 1px solid rgb(203, 200, 200);
+
+}
+
+#popup_events_bar{
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-bottom: 1px solid #CFCFCF;
+    height: 25px;
+}
+#popup_events_bottom{
+    background: none repeat scroll 0 0 #FEFEFE;
+    border-bottom: 1px solid #9F9797;
+    border-radius: 0 0 5px 5px;
+    height: 25px;
+}
+
+.ver_cal_err{
+    background: none repeat scroll 0 0 #DD5C6D;
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-top: 5px;
+    padding: 2px 5px;
+}
+

@@ -1,0 +1,36 @@
+
+<div id="cta" class="full-width">
+
+	<div class="container">
+	
+	
+		<div class="cta_box one">
+			<h2>Mini Feature/Call to action #1</h2>
+			<span>Here's come subtext about the call to action</span>
+			<img src="wp-content/themes/blankslate/images/large_cta.jpg" />
+		
+		
+		</div>
+		
+		<div class="cta_box two">
+			<h2>Mini Feature/Call to action #2</h2>
+			<span>Here's come subtext about the call to action</span>
+			<img src="wp-content/themes/blankslate/images/large_cta.jpg" />
+		
+		
+		</div>
+		
+		<div class="cta_box three">
+			<h2>Mini Feature/Call to action #3</h2>
+			<span>Here's come subtext about the call to action</span>
+			<img src="wp-content/themes/blankslate/images/large_cta.jpg" />
+		
+		
+		</div>
+	
+	
+	
+	</div>
+
+</div>
+

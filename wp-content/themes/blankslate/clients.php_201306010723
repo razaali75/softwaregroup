@@ -1,0 +1,24 @@
+
+<div id="clients" class="full-width">
+
+	<div class="container">
+	
+		<div class="clients">
+		
+		<h2>Our Clients</h2>
+		
+			<div class="client_images">
+				<img src="<?php echo $wptuts_options['logo06']; ?>" />
+				<img src="<?php echo $wptuts_options['logo07']; ?>" />
+				<img src="<?php echo $wptuts_options['logo08']; ?>" />
+			</div>
+			<div class="client_case">
+			<p><?php echo $wptuts_options['client_text']; ?>
+			</p>
+			</div>
+			
+		</div>
+	
+	</div>
+
+</div>

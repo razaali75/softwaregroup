@@ -1,0 +1,43 @@
+
+<div id="choose" class="full-width">
+
+	<div class="container">
+	
+		<h2>Why Choose Us?</h2>
+	
+		<div class="choose_box one">
+		
+			<h3>Follow a Proven Strategy</h3>
+			<img src="wp-content/themes/blankslate/images/wcu1.png" />
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue, nisi a ullamcorper luctus, velit nisl tincidunt est, nec convallis nibh odio sed massa. Donec et tellus diam. Phasellus hendrerit vestibulum neque sit amet feugiat. Fusce magna mauris, aliquam eget.
+			</p>
+		
+		</div>
+	
+		<div class="choose_box two">
+		
+			<h3>Lower Costs</h3>
+			<img src="wp-content/themes/blankslate/images/wcu2.png" />
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue, nisi a ullamcorper luctus, velit nisl tincidunt est, nec convallis nibh odio sed massa. Donec et tellus diam. Phasellus hendrerit vestibulum neque sit amet feugiat. Fusce magna mauris, aliquam eget.
+			</p>
+		
+		</div>
+		
+		<div class="choose_box three">
+		
+			<h3>Work Efficiency</h3>
+			<img src="wp-content/themes/blankslate/images/wcu3.png" />
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean congue, nisi a ullamcorper luctus, velit nisl tincidunt est, nec convallis nibh odio sed massa. Donec et tellus diam. Phasellus hendrerit vestibulum neque sit amet feugiat. Fusce magna mauris, aliquam eget.
+			</p>
+		
+		</div>
+	
+	
+	
+	</div>
+
+</div>
+
